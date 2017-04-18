@@ -8,7 +8,7 @@ void setup (){
 void draw(){
   line(pmouseX,pmouseY,mouseX,mouseY);
 }
-// When I pressed the keys , the color of the line change//
+// When I hold the mouse and  pressed the keys , the color of the line change//
 void keyPressed() {
  value = value + 5;
   if (value > 255) {
@@ -23,9 +23,27 @@ void mouseClicked() {
   stroke(value);
 }
 
-//When I moved the mouse wheel up or down, the color of the line change//
+//When I clicked moved the mouse wheel up or down, the color of the line change//
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   println(e);
   stroke (value);
+}
+
+//When I click and hold the mouse, the color of the line change//
+void mouseDragged() {
+ 
+  value = value + 5;
+  if (value > 255) {
+    value = 0;
+  }
+}
+
+//When the mouse button is released and pressed the keys, the color of the line change//
+void mouseReleased() {
+  if (value == 0) {
+    value = 255;
+  } else {
+    value = 0;
+  }
 }
